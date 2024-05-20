@@ -1,6 +1,6 @@
 {% extends "layout" %}
 
-{% block title %}Contact List – About{% endblock %}
+{% block title %}Add question{% endblock %}
 
 {% block main %}
 <main>
