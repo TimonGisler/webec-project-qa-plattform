@@ -3,6 +3,7 @@ package ch.fhnw.webec.frageundantwortapp.controller;
 import ch.fhnw.webec.frageundantwortapp.model.Question;
 import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,7 +20,8 @@ public class QuestionController {
      * Returns a list of all questions.
      */
     @GetMapping("questions")
-    public String questions() {
+    public String questions(Model model) {
+        model.addAttribute("questionList", questionService.getAllQuestions());
         return "questions";
     }
 

@@ -1,1 +1,17 @@
-LIST OF QUESTIONS : D --> TODO TGIS
+{# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+
+{% extends "layout" %}
+
+{% block title %}Questions{% endblock %}
+
+{% block main %}
+<main>
+    <ul class="plain">
+        {% for question in questionList %}
+        <li>
+            title: {{ question.title }} text: {{ question.text }}
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

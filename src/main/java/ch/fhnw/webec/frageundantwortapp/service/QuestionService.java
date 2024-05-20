@@ -4,6 +4,8 @@ import ch.fhnw.webec.frageundantwortapp.model.Question;
 import ch.fhnw.webec.frageundantwortapp.model.QuestionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QuestionService {
 
@@ -15,5 +17,9 @@ public class QuestionService {
 
     public Question addQuestion(Question questionToAdd) {
         return repository.save(questionToAdd);
+    }
+
+    public List<Question> getAllQuestions() {
+        return repository.findAll();
     }
 }
