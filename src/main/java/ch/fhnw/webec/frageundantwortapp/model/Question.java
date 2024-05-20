@@ -11,8 +11,8 @@ public class Question {
     @GeneratedValue
     private Integer id;
 
-    private String title;
-    private String text;
+    private String title; // TODO TGIS, consider making this non nullable
+    private String text; // TODO TGIS, consider making this non nullable
 
 
     public void setId(int id) {
