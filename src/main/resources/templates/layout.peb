@@ -7,7 +7,15 @@
     <title>{% block title %}Title{% endblock %}</title>
 </head>
 <div id="container">
-    {# TODO TGIS, add  header#}
+    <header>
+        <h1>Frage und Antworte App</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ href("/questions") }}">All Questions</a></li>
+                <li><a href="{{ href("/questions/add") }}">Add Question</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block main %}
     {% endblock %}
     {# TODO TGIS, consider footer#}
