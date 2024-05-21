@@ -5,6 +5,7 @@ import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -23,6 +24,25 @@ public class QuestionController {
     public String questions(Model model) {
         model.addAttribute("questionList", questionService.getAllQuestions());
         return "questions";
+    }
+
+    /**
+     * Screens for answering a question.
+     */
+    @GetMapping("questions/{id}")
+    public String answerQuestion(@PathVariable int id, Model model) {
+        Question question = questionService.getQuestion(id).orElseThrow();
+        model.addAttribute("question", question);
+        return "answer-question";
+    }
+
+    /**
+     * Answers a question.
+     */
+    @PostMapping("questions/{id}")
+    public String answerQuestion(@PathVariable int id, String answer) {
+        // TODO TGIS, implement setting of answer
+        return "answer-question";
     }
 
 

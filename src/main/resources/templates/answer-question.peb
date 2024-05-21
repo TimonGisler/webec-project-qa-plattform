@@ -1,0 +1,22 @@
+{# @pebvariable name="question" type="ch.fhnw.webec.frageundantwortapp.model.Question" #}
+
+{% extends "layout" %}
+
+{% block title %}Add question{% endblock %}
+
+{% block main %}
+<main>
+    <h1>Title: {{ question.title }}</h1>
+    <p>Text: {{ question.text }}</p>
+    <h1>Answer Question:</h1>
+    <form method="post">
+        <div>
+            <label for="answer">Your Answer:</label>
+            <input type="text" name="answer" id="answer">
+        </div>
+        <p>
+            <input type="submit" value="Add">
+        </p>
+    </form>
+</main>
+{% endblock %}

@@ -9,7 +9,7 @@
     <ul class="plain">
         {% for question in questionList %}
         <li>
-            title: {{ question.title }} text: {{ question.text }}
+            title: {{ question.title }} text: {{ question.text }} <a href="{{ href("/questions/" + question.id) }}">Details</a>
         </li>
         {% endfor %}
     </ul>
