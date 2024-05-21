@@ -17,6 +17,9 @@ public class Question {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<>();
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Tag> tags = new ArrayList<>();
+
     public void setId(int id) {
         this.id = id;
     }
@@ -47,5 +50,9 @@ public class Question {
 
     public void addAnswer(Answer answerToAdd) {
         answers.add(answerToAdd);
+    }
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
     }
 }

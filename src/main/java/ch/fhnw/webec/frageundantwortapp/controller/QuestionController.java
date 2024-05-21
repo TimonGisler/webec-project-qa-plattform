@@ -1,6 +1,7 @@
 package ch.fhnw.webec.frageundantwortapp.controller;
 
 import ch.fhnw.webec.frageundantwortapp.model.Question;
+import ch.fhnw.webec.frageundantwortapp.model.Tag;
 import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,10 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.swing.text.html.HTML;
+import java.util.List;
+
 @Controller
 public class QuestionController {
 
     private final QuestionService questionService;
+
 
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
@@ -48,7 +53,8 @@ public class QuestionController {
 
 
     @GetMapping("questions/add")
-    public String addQuestion() {
+    public String addQuestion(Model model) {
+        model.addAttribute("tagList",  questionService.getAllTags());
         return "add-question";
     }
 
@@ -56,10 +62,15 @@ public class QuestionController {
      * Adds a new question.
      */
     @PostMapping("questions/add") //TODO TGIS, is Postmapping to just /questions/ maybe more appropriate / Restful?
-    public String addQuestion(String title, String text) {
+    public String addQuestion(String title, String text, int[] tags) {
         Question newQuestion = new Question();
         newQuestion.setTitle(title);
         newQuestion.setText(text);
+
+        //TODO TGIS, this is probably not the cleanest : ), getting all tags and then filtering : ))). --> maybe move entire logic into questinServie
+        for (int tagId : tags) {
+            newQuestion.addTag(questionService.getAllTags().stream().filter(tag -> tag.getId() == tagId).findFirst().orElseThrow());
+        }
 
         var savedQuestion = questionService.addQuestion(newQuestion);
 

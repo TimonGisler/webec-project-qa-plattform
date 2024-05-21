@@ -1,8 +1,6 @@
 package ch.fhnw.webec.frageundantwortapp.service;
 
-import ch.fhnw.webec.frageundantwortapp.model.Answer;
-import ch.fhnw.webec.frageundantwortapp.model.Question;
-import ch.fhnw.webec.frageundantwortapp.model.QuestionRepository;
+import ch.fhnw.webec.frageundantwortapp.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +10,12 @@ import java.util.Optional;
 public class QuestionService {
 
     private final QuestionRepository repository;
+    private final TagRepository tagRepository;
 
-    public QuestionService(QuestionRepository repository) {
+
+    public QuestionService(QuestionRepository repository, TagRepository tagRepository) {
         this.repository = repository;
+        this.tagRepository = tagRepository;
     }
 
     public Question addQuestion(Question questionToAdd) {
@@ -37,5 +38,10 @@ public class QuestionService {
 
         question.addAnswer(answerToAdd);
         return repository.save(question);
+    }
+
+    //TODO TGIS, is this the correct place for this method? Or do I need a new service?
+    public List<Tag> getAllTags() {
+        return tagRepository.findAll();
     }
 }

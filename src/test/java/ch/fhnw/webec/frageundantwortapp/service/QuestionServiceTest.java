@@ -2,6 +2,7 @@ package ch.fhnw.webec.frageundantwortapp.service;
 
 import ch.fhnw.webec.frageundantwortapp.model.Question;
 import ch.fhnw.webec.frageundantwortapp.model.QuestionRepository;
+import ch.fhnw.webec.frageundantwortapp.model.TagRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,9 +19,9 @@ class QuestionServiceTest {
     QuestionRepository repo;
 
     @Autowired
-    QuestionServiceTest(QuestionRepository repo) {
-        sut = new QuestionService(repo);
-        this.repo = repo;
+    QuestionServiceTest(QuestionRepository questionRepository, TagRepository tagRepository) {
+        sut = new QuestionService(questionRepository, tagRepository);
+        this.repo = questionRepository;
     }
 
     @Test
