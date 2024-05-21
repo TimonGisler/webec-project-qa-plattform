@@ -6,17 +6,31 @@
 
 {% block main %}
 <main>
-    <h1>Title: {{ question.title }}</h1>
-    <p>Text: {{ question.text }}</p>
-    <h1>Answer Question:</h1>
-    <form method="post">
-        <div>
-            <label for="answer">Your Answer:</label>
-            <input type="text" name="answer" id="answer">
-        </div>
-        <p>
-            <input type="submit" value="Add">
-        </p>
-    </form>
+    <div id="question">
+        <h1>Title: {{ question.title }}</h1>
+        <p>Text: {{ question.text }}</p>
+    </div>
+
+    <div id="answer-question">
+        <h1>Answer Question:</h1>
+        <form method="post">
+            <div>
+                <label for="answer">Your Answer:</label>
+                <input type="text" name="answer" id="answer">
+            </div>
+            <p>
+                <input type="submit" value="Add">
+            </p>
+        </form>
+    </div>
+
+    <div id="answers">
+        <h1>Answers:</h1>
+        <ul>
+            {% for answer in question.answers %}
+                <li>{{ answer.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </main>
 {% endblock %}

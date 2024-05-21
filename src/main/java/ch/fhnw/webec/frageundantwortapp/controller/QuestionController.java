@@ -40,8 +40,9 @@ public class QuestionController {
      * Answers a question.
      */
     @PostMapping("questions/{id}")
-    public String answerQuestion(@PathVariable int id, String answer) {
-        // TODO TGIS, implement setting of answer
+    public String answerQuestion(@PathVariable int id, String answer, Model model) {
+        Question answeredQuestion = questionService.addAnswerToQuestion(id, answer);
+        model.addAttribute("question", answeredQuestion);
         return "answer-question";
     }
 

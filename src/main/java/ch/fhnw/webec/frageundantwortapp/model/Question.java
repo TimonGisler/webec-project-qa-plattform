@@ -1,8 +1,9 @@
 package ch.fhnw.webec.frageundantwortapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Question {
@@ -13,7 +14,8 @@ public class Question {
 
     private String title; // TODO TGIS, consider making this non nullable
     private String text; // TODO TGIS, consider making this non nullable
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Answer> answers = new ArrayList<>();
 
     public void setId(int id) {
         this.id = id;
@@ -37,5 +39,13 @@ public class Question {
 
     public String getText() {
         return text;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void addAnswer(Answer answerToAdd) {
+        answers.add(answerToAdd);
     }
 }
