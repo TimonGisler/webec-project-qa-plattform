@@ -41,6 +41,27 @@ public class QuestionController {
         return "answer-question";
     }
 
+    @GetMapping("questions/{id}/update")
+    public String updateQuestion(@PathVariable int id, Model model) {
+        Question question = questionService.getQuestion(id).orElseThrow();
+        model.addAttribute("question", question);
+        model.addAttribute("tagList", questionService.getAllTags());
+        return "update-question";
+    }
+
+    @PostMapping("questions/{id}/update")
+    public String updateQuestion(@PathVariable int id, String title, String text, int[] tags) {
+        Question question = questionService.getQuestion(id).orElseThrow();
+        question.setTitle(title);
+        question.setText(text);
+        question.getTags().clear();
+        for (int tagId : tags) {
+            question.addTag(questionService.getAllTags().stream().filter(tag -> tag.getId() == tagId).findFirst().orElseThrow());
+        }
+        questionService.updateQuestion(question);
+        return "redirect:/questions/" + id;
+    }
+
     /**
      * Answers a question.
      */

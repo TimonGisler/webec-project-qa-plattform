@@ -1,0 +1,15 @@
+{# @pebvariable name="tagList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+{# @pebvariable name="question" type="ch.fhnw.webec.frageundantwortapp.model.Question" #}
+
+{% import "macros/question-data-form" %}
+
+{% extends "layout" %}
+
+{% block title %}Edit question{% endblock %}
+
+{% block main %}
+<main>
+    <h1>Edit Question</h1>
+    {{ questionForm(tagList, question.title, question.text, question.tags) }}
+</main>
+{% endblock %}

@@ -44,4 +44,8 @@ public class QuestionService {
     public List<Tag> getAllTags() {
         return tagRepository.findAll();
     }
+
+    public void updateQuestion(Question question) {
+        repository.save(question);
+    }
 }

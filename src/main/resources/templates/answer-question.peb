@@ -22,6 +22,7 @@
             </div>
             <p>
                 <input type="submit" value="Add">
+                <a href="{{ href("/questions/" + question.id + "/update") }}">Edit Question</a>
             </p>
         </form>
     </div>
