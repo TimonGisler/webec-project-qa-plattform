@@ -48,6 +48,10 @@ public class Question {
         return answers;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
     public void addAnswer(Answer answerToAdd) {
         answers.add(answerToAdd);
     }

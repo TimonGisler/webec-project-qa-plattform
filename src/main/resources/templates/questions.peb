@@ -1,4 +1,7 @@
 {# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+{# @pebvariable name="tags" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+
+{% import "macros/tag-list" %}
 
 {% extends "layout" %}
 
@@ -6,10 +9,14 @@
 
 {% block main %}
 <main>
-    <ul class="plain">
+    <ul>
         {% for question in questionList %}
         <li>
-            title: {{ question.title }} text: {{ question.text }} <a href="{{ href("/questions/" + question.id) }}">Details</a>
+            title: {{ question.title }}
+            text: {{ question.text }}
+
+            <a href="{{ href("/questions/" + question.id) }}">Details</a>
+            {{ tags(question.tags) }}
         </li>
         {% endfor %}
     </ul>
