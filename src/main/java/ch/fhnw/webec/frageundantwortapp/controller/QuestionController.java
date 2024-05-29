@@ -107,4 +107,12 @@ public class QuestionController {
         return "redirect:/questions";
     }
 
+    // mapping for:
+    //  href("/questions/" + question.id + "/answers/" + answer.id + "/delete")
+    @GetMapping("questions/{questionId}/answers/{answerId}/delete")
+    public String deleteAnswer(@PathVariable int questionId, @PathVariable int answerId) {
+        questionService.deleteAnswer(questionId, answerId);
+        return "redirect:/questions/" + questionId;
+    }
+
 }

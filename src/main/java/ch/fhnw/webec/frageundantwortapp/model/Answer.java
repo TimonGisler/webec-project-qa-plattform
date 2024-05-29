@@ -21,5 +21,9 @@ public class Answer {
             return text;
         }
 
+        public Integer getId() {
+            return id;
+        }
+
 
 }

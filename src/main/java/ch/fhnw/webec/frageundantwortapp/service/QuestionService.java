@@ -52,4 +52,10 @@ public class QuestionService {
     public void deleteQuestion(int id) {
         repository.deleteById(id);
     }
+
+    public void deleteAnswer(int questionId, int answerId) {
+        Question question = repository.findById(questionId).orElseThrow();
+        question.getAnswers().removeIf(answer -> answer.getId() == answerId);
+        repository.save(question);
+    }
 }

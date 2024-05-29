@@ -33,6 +33,7 @@
         <ul>
             {% for answer in question.answers %}
                 <li>{{ answer.text }}</li>
+                <a href=" {{ href("/questions/" + question.id + "/answers/" + answer.id + "/delete") }}">Delete Answer</a>
             {% endfor %}
         </ul>
     </div>
