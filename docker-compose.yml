@@ -2,7 +2,7 @@
 services:
   app:
     build: . # path to the Dockerfile to build the image
-    image: webec-qa-spring:2 # docker will check if this image exists, if not it will build it
+    image: webec-qa-spring:3 # docker will check if this image exists, if not it will build it
     restart: always # restart the container if it crashes or if the system reboots or similar
     ports:
       - 8080:8080 # map the port 8080 from the container to the port 8080 on the host

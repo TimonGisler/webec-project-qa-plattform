@@ -5,8 +5,8 @@ run-name: ${{ github.actor }} triggered deploy to hetzner
 # only run the job if push on certain branch
 on:
   push:
-    # branches:
-    #  - master
+    branches:
+    - master
 
 jobs:
   build_and_deploy_to_hetzner: # the job id
