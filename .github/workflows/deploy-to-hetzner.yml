@@ -40,4 +40,4 @@ jobs:
             cd ${{ vars.CONTENT_DIRECTORY_PATH }}
             chmod +x ./mvnw
             ./mvnw install
-            docker compose up -d
+            docker compose up -d --build
