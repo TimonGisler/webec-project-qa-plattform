@@ -33,13 +33,14 @@ public class QuestionController {
     }
 
     /**
-     * Screens for answering a question.
+     * Detail Screen of a question.
+     * Here the title, text, questions, can be seen and updated.
      */
     @GetMapping("questions/{id}")
     public String answerQuestion(@PathVariable int id, Model model) {
         Question question = questionService.getQuestion(id).orElseThrow();
         model.addAttribute("question", question);
-        return "answer-question";
+        return "question-detail";
     }
 
     @GetMapping("questions/{id}/update")
@@ -77,7 +78,7 @@ public class QuestionController {
     public String answerQuestion(@PathVariable int id, String answer, Model model) {
         Question answeredQuestion = questionService.addAnswerToQuestion(id, answer);
         model.addAttribute("question", answeredQuestion);
-        return "answer-question";
+        return "question-detail";
     }
 
 
