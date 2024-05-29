@@ -6,6 +6,7 @@ import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -60,6 +61,13 @@ public class QuestionController {
         }
         questionService.updateQuestion(question);
         return "redirect:/questions/" + id;
+    }
+
+    //TODO TGIS, idk getmapping for that seems weird
+    @GetMapping("questions/{id}/delete")
+    public String deleteQuestion(@PathVariable int id) {
+        questionService.deleteQuestion(id);
+        return "redirect:/questions";
     }
 
     /**
