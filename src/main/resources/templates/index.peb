@@ -1,1 +1,8 @@
-Hello World : D
+{# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+{# @pebvariable name="tags" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+
+    {% import "macros/tag-list" %}
+
+    {% extends "layout" %}
+
+    {% block title %}Questions{% endblock %}
