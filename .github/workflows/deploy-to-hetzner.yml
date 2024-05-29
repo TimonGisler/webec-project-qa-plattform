@@ -1,8 +1,32 @@
-name: hello-world
-on: push
+name: Deploy to hetzner
+run-name: ${{ github.actor }} triggered deploy to hetzner
+# specify when this workflow runs
+# use event with filters --> https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#using-filters
+# only run the job if push on certain branch
+on:
+  push:
+    branches:
+      - master
+
 jobs:
-  my-job:
-    runs-on: ubuntu-latest
+  build_and_deploy_to_hetzner: # the job id
+    name: build and deploy to hetzner # the job name (displayed in ui)
+    runs-on: ubuntu-latest # Good to know, common tools like docker and npm are preinstalled in ubuntu-latest https://github.com/actions/runner-images#software-and-image-support
+
+    # define steps to execute https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsteps
     steps:
-      - name: my-step
-        run: echo "Hello World! Another test"
+      -
+        name: checkout newly pushed commit
+        uses: actions/checkout@v4 # checkout my repo "By default, this action will check-out to the SHA for that workflow’s event (such as push and pull_request)." https://stackoverflow.com/a/76938699/15015069
+
+      -
+        name: copy everything over to the server
+        uses: appleboy/scp-action@v0.1.7 # https://github.com/appleboy/scp-action#usage
+        with:
+          host: ${{ secrets.HETZNER_VPS_IP }}
+          username: ${{ secrets.HETZNER_VPS_SSH_USER }}
+          key: ${{ secrets.HETZNER_VPS_SSH_PRIVATE_KEY }}
+          source: "."
+          target: ${{ vars.CONTENT_DIRECTORY_PATH }}
+
+          # TODO TGIS, start application
