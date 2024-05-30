@@ -7,38 +7,42 @@
 
 {% block main %}
 <main class="main-content">
-    <h1 class="main-content__title">Question: </h1>
-    <div class="question card">
-        <h1 class="question__title">Title: {{ question.title }}</h1>
-        <p class="question__text">Text: {{ question.text }}</p>
-        {{ tags(question.tags) }}
-        <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
-        <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
-    </div>
+    <section class="question-section">
+        <h1 class="main-content__title">Question: </h1>
+        <article class="question card">
+            <h2 class="question__title">Title: {{ question.title }}</h2>
+            <p class="question__text">Text: {{ question.text }}</p>
+            {{ tags(question.tags) }}
+            <nav class="question__actions">
+                <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
+                <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
+            </nav>
+        </article>
+    </section>
 
-    <div class="answer-question">
+    <section class="answer-question">
         <h1 class="main-content__title">Answer Question:</h1>
         <form class="form card" method="post">
             <div class="form__group">
                 <label class="form__label" for="answer">Your Answer:</label>
                 <input class="form__input" type="text" name="answer" id="answer">
             </div>
-            <p class="form__actions">
+            <div class="form__actions">
                 <input class="form__button" type="submit" value="Add">
-            </p>
+            </div>
         </form>
-    </div>
+    </section>
 
-    <div class="answers">
+    <section class="answers">
         <h1 class="main-content__title">Answers:</h1>
         <ul class="answers__list">
                 {% for answer in question.answers %}
-                <div class="card">
-                    <li class="answers__item">{{ answer.text }}</li>
+                <li class="answers__item card">
+                    <p>{{ answer.text }}</p>
                     <a class="link link--red" href="{{ href('/questions/' + question.id + '/answers/' + answer.id + '/delete') }}">Delete Answer</a>
-                </div>
+                </li>
                 {% endfor %}
         </ul>
-    </div>
+    </section>
 </main>
 {% endblock %}
