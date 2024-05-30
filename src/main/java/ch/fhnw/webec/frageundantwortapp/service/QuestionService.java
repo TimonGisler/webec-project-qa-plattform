@@ -9,35 +9,35 @@ import java.util.Optional;
 @Service
 public class QuestionService {
 
-    private final QuestionRepository repository;
+    private final QuestionRepository questionRepository;
     private final TagRepository tagRepository;
 
 
     public QuestionService(QuestionRepository repository, TagRepository tagRepository) {
-        this.repository = repository;
+        this.questionRepository = repository;
         this.tagRepository = tagRepository;
     }
 
     public Question addQuestion(Question questionToAdd) {
-        return repository.save(questionToAdd);
+        return questionRepository.save(questionToAdd);
     }
 
     public List<Question> getAllQuestions() {
-        return repository.findAll();
+        return questionRepository.findAll();
     }
 
 
     public Optional<Question> getQuestion(int id) {
-        return repository.findById(id);
+        return questionRepository.findById(id);
     }
 
     public Question addAnswerToQuestion(int id, String answer) {
-        Question question = repository.findById(id).orElseThrow();
+        Question question = questionRepository.findById(id).orElseThrow();
         Answer answerToAdd = new Answer();
         answerToAdd.setText(answer);
 
         question.addAnswer(answerToAdd);
-        return repository.save(question);
+        return questionRepository.save(question);
     }
 
     //TODO TGIS, is this the correct place for this method? Or do I need a new service?
@@ -46,16 +46,16 @@ public class QuestionService {
     }
 
     public void updateQuestion(Question question) {
-        repository.save(question);
+        questionRepository.save(question);
     }
 
     public void deleteQuestion(int id) {
-        repository.deleteById(id);
+        questionRepository.deleteById(id);
     }
 
     public void deleteAnswer(int questionId, int answerId) {
-        Question question = repository.findById(questionId).orElseThrow();
+        Question question = questionRepository.findById(questionId).orElseThrow();
         question.getAnswers().removeIf(answer -> answer.getId() == answerId);
-        repository.save(question);
+        questionRepository.save(question);
     }
 }
