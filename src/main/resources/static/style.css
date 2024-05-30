@@ -229,3 +229,48 @@
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+/* Main Content Block */
+.main-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.main-content__title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Welcome Block */
+.main-content__welcome-block {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-block__text {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.welcome-block__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.welcome-block__list-item {
+    margin-bottom: 10px;
+}
+
+.welcome-block__link {
+    font-size: 1em;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.welcome-block__link:hover {
+    text-decoration: underline;
+}

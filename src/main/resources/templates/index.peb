@@ -5,4 +5,26 @@
 
     {% extends "layout" %}
 
-    {% block title %}Questions{% endblock %}
+    {% block title %}Index{% endblock %}
+
+
+{% block main %}
+<main class="main-content">
+    <h1 class="main-content__title">Welcome : D !</h1>
+    <section class="main-content__welcome-block welcome-block">
+        <p class="welcome-block__text">Welcome to our Q&A platform.</p>
+        <p class="welcome-block__text">Navigate through our platform using the following options:</p>
+        <ul class="welcome-block__list">
+            <li class="welcome-block__list-item">
+                <a class="welcome-block__link" href="/all-questions">All Questions</a> - Browse through all the questions asked by our community.
+            </li>
+            <li class="welcome-block__list-item">
+                <a class="welcome-block__link" href="/add-question">Add Question</a> - Have a question in mind? Add it here and get answers from our knowledgeable community.
+            </li>
+            <li class="welcome-block__list-item">
+                <a class="welcome-block__link" href="/about">About</a> - Learn more about our platform and its mission.
+            </li>
+        </ul>
+    </section>
+</main>
+{% endblock %}
