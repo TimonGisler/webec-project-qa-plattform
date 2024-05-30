@@ -12,7 +12,7 @@
     <h1 class="main-content__title">All Questions: </h1>
     <ul class="question-list">
             {% for question in questionList %}
-            <li class="card">
+            <li id="question-list__item" class="card">
                 <div class="question-list__content">
                     <h2 class="question-list__title">Title: {{ question.title }}</h2>
                     <p class="question-list__text">Text: {{ question.text }}</p>

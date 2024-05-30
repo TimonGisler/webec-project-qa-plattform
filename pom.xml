@@ -47,6 +47,11 @@
 			<artifactId>pebble-spring-boot-starter</artifactId>
 			<version>3.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>htmlunit-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
