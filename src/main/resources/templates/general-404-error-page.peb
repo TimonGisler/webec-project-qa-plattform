@@ -1,0 +1,15 @@
+{# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+{# @pebvariable name="tags" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+
+    {% import "macros/tag-list" %}
+
+    {% extends "layout" %}
+
+    {% block title %}General 404 Error Page{% endblock %}
+
+
+{% block main %}
+<main class="main-content">
+    <h1 class="main-content__title error-alert">The requested site: {{ url }} does not exist</h1>
+</main>
+{% endblock %}

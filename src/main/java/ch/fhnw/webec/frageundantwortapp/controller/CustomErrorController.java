@@ -28,6 +28,9 @@ public class CustomErrorController implements ErrorController {
         if (statusCode == HttpStatus.NOT_FOUND.value() && url.matches(questionPattern)) {
             model.addAttribute("questionId", url.substring(url.lastIndexOf("/") + 1));
             return "question-error-page";
+        } else if (statusCode == HttpStatus.NOT_FOUND.value()) {
+            model.addAttribute("url", url);
+            return "general-404-error-page";
         } else {
             model.addAttribute("url", url);
             model.addAttribute("statusCode", statusCode);
