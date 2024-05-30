@@ -15,11 +15,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @Controller
 public class CustomErrorController implements ErrorController {
 
-    private final String questionPattern = "^/questions/\\d+$";
     private final String answerPattern = "^/questions/\\d+/answers/\\d+$";
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
+        String questionPattern = "^/questions/\\d+$";
+
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         String url = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
 
