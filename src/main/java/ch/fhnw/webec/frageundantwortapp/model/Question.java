@@ -14,7 +14,7 @@ public class Question {
 
     private String title; // TODO TGIS, consider making this non nullable
     private String text; // TODO TGIS, consider making this non nullable
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)

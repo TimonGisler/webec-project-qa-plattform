@@ -1,8 +1,6 @@
 package ch.fhnw.webec.frageundantwortapp.service;
 
-import ch.fhnw.webec.frageundantwortapp.model.Question;
-import ch.fhnw.webec.frageundantwortapp.model.QuestionRepository;
-import ch.fhnw.webec.frageundantwortapp.model.TagRepository;
+import ch.fhnw.webec.frageundantwortapp.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,12 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class QuestionServiceTest {
 
-    QuestionService sut;
-    QuestionRepository repo;
+    private final QuestionService sut;
+    private final QuestionRepository repo;
+    private final AnswerRepository answerRepository;
 
     @Autowired
-    QuestionServiceTest(QuestionRepository questionRepository, TagRepository tagRepository) {
-        sut = new QuestionService(questionRepository, tagRepository);
+    QuestionServiceTest(QuestionRepository questionRepository, TagRepository tagRepository, AnswerRepository answerRepository) {
+        this.answerRepository = answerRepository;
+        this.sut = new QuestionService(questionRepository, tagRepository);
         this.repo = questionRepository;
     }
 
@@ -40,4 +40,49 @@ class QuestionServiceTest {
         assertEquals(detailOfQuestion, savedQuestion.getText());
     }
 
+    @Test
+    void deleteQuestion_deletesQuestionFromDb() {
+        var question = new Question();
+        question.setTitle("Test Title");
+        question.setText("Test Details");
+        var savedQuestion = repo.save(question);
+
+        sut.deleteQuestion(savedQuestion.getId());
+
+        assertFalse(repo.existsById(savedQuestion.getId()));
+    }
+
+    @Test
+    void addAnswerToQuestion_savesAnswerWithCorrectDetails() {
+        var question = new Question();
+        question.setTitle("Test Title");
+        question.setText("Test Details");
+        var savedQuestion = repo.save(question);
+
+        String answerText = "Test Answer";
+        var savedQuestionWithAnswer = sut.addAnswerToQuestion(savedQuestion.getId(), answerText);
+
+        assertNotNull(savedQuestionWithAnswer);
+        assertNotNull(savedQuestionWithAnswer.getAnswers());
+        assertEquals(1, savedQuestionWithAnswer.getAnswers().size());
+        assertEquals(answerText, savedQuestionWithAnswer.getAnswers().getFirst().getText());
+    }
+
+    @Test
+    void deleteQuestion_deletesAssociatedAnswersFromDb() {
+        var question = new Question();
+        question.setTitle("Test Title");
+        question.setText("Test Details");
+
+        var answerOfQuestion = new Answer();
+        answerOfQuestion.setText("Test Answer");
+        question.addAnswer(answerOfQuestion);
+        var savedQuestion = repo.save(question);
+
+        var savedAnswerId = savedQuestion.getAnswers().getFirst().getId();
+
+        sut.deleteQuestion(savedQuestion.getId());
+
+        assertFalse(answerRepository.existsById(savedAnswerId));
+    }
 }
