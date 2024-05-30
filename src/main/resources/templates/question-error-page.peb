@@ -1,0 +1,15 @@
+{# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+{# @pebvariable name="tags" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+
+    {% import "macros/tag-list" %}
+
+    {% extends "layout" %}
+
+    {% block title %}404 Question Error{% endblock %}
+
+
+{% block main %}
+<main class="main-content">
+    <h1 class="main-content__title error-alert">Error: the question (question id: {{ questionId }}) you tried to access does not exist</h1>
+</main>
+{% endblock %}

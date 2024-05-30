@@ -4,12 +4,14 @@ import ch.fhnw.webec.frageundantwortapp.model.Question;
 import ch.fhnw.webec.frageundantwortapp.model.Tag;
 import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
 import org.springframework.boot.Banner;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.text.html.HTML;
 import java.util.List;
@@ -39,7 +41,7 @@ public class QuestionController {
      */
     @GetMapping("questions/{id}")
     public String answerQuestion(@PathVariable int id, Model model) {
-        Question question = questionService.getQuestion(id).orElseThrow();
+        Question question = questionService.getQuestion(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Question not found"));;
         model.addAttribute("question", question);
         return "question-detail";
     }

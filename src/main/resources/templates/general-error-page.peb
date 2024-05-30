@@ -1,0 +1,15 @@
+{# @pebvariable name="questionList" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Question>" #}
+{# @pebvariable name="tags" type="java.util.List<ch.fhnw.webec.frageundantwortapp.model.Tag>" #}
+
+    {% import "macros/tag-list" %}
+
+    {% extends "layout" %}
+
+    {% block title %}General Error Page{% endblock %}
+
+
+{% block main %}
+<main class="main-content">
+    <h1 class="main-content__title error-alert">An unknown error happened, while making a request to: {{ url }}, the status code is: {{ statusCode }}</h1>
+</main>
+{% endblock %}
