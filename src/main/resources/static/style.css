@@ -184,3 +184,36 @@
     font-size: 1rem;
     color: #495057;
 }
+
+
+.about__section {
+    margin-bottom: 20px;
+}
+
+.about__section-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+.about__text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.about__list {
+    margin-left: 40px;
+}
+
+.about__list-item {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.about__link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
