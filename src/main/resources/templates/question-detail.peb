@@ -12,6 +12,8 @@
         <h1 class="question__title">Title: {{ question.title }}</h1>
         <p class="question__text">Text: {{ question.text }}</p>
         {{ tags(question.tags) }}
+        <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
+        <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
     </div>
 
     <div class="answer-question">
@@ -23,8 +25,6 @@
             </div>
             <p class="form__actions">
                 <input class="form__button" type="submit" value="Add">
-                <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
-                <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
             </p>
         </form>
     </div>
