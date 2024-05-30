@@ -6,7 +6,7 @@ run-name: ${{ github.actor }} triggered deploy to hetzner
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_to_hetzner: # the job id
