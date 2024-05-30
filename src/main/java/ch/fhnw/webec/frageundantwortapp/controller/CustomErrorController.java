@@ -21,14 +21,9 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-
-        if (status == null) {
-            return "error";
-        }
-
+        String url = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
 
         int statusCode = Integer.parseInt(status.toString());
-        String url = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
 
         if (statusCode == HttpStatus.NOT_FOUND.value() && url.matches(questionPattern)) {
             model.addAttribute("questionId", url.substring(url.lastIndexOf("/") + 1));
