@@ -25,6 +25,9 @@
             <li class="about__list-item">Delete Answer</li>
             <li class="about__list-item">Edit Question</li>
             <li class="about__list-item">Delete Question</li>
+            <li class="about__list-item">View all Questions</li>
+            <li class="about__list-item">Server side validation (no question without title, text or tags)</li>
+            <li class="about__list-item">Custom 404 error page if entity was not found and general error page for everything else</li>
         </ul>
     </section>
 </main>
