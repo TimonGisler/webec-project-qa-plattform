@@ -16,8 +16,8 @@
                     <span class="question-list__title">Title: {{ question.title }}</span>
                     <span class="question-list__text">Text: {{ question.text }}</span>
                 </div>
-                <a class="link" href="{{ href('/questions/' + question.id) }}">Details</a>
                 {{ tags(question.tags) }}
+                <a class="link" href="{{ href('/questions/' + question.id) }}">Details / More</a>
             </li>
             {% endfor %}
     </ul>
