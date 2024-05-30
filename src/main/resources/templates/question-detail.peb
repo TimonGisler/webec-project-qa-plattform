@@ -4,7 +4,7 @@
 
 {% extends "layout" %}
 
-{% block title %}Add question{% endblock %}
+{% block title %}Question Detail{% endblock %}
 
 {% block main %}
 <main class="main-content">
