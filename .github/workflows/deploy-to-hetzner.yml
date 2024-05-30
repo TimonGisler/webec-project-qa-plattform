@@ -38,6 +38,7 @@ jobs:
           key: ${{ secrets.HETZNER_VPS_SSH_PRIVATE_KEY }}
           script: | # pipe char means text below is a text block and new lines also belong to it. https://stackoverflow.com/a/61661091/15015069
             source /etc/profile
+            sudo chown -R cicddeploy:cicddeploy /home/cicddeploy/webec-qa/target
             cd ${{ vars.CONTENT_DIRECTORY_PATH }}
             chmod +x ./mvnw
             ./mvnw install
