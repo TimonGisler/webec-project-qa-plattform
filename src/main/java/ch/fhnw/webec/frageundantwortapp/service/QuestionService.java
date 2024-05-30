@@ -40,7 +40,6 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
-    //TODO TGIS, is this the correct place for this method? Or do I need a new service?
     public List<Tag> getAllTags() {
         return tagRepository.findAll();
     }

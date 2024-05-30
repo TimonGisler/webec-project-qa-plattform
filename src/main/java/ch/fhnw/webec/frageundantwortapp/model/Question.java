@@ -12,8 +12,8 @@ public class Question {
     @GeneratedValue
     private Integer id;
 
-    private String title; // TODO TGIS, consider making this non nullable
-    private String text; // TODO TGIS, consider making this non nullable
+    private String title;
+    private String text;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 

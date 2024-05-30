@@ -16,8 +16,6 @@ public class Tag {
 
     private String name;
 
-    //TODO TGIS, i dont see any reason to add a list of questions on the tag side, figure out if this is needed for full points
-
     public Integer getId() {
         return id;
     }

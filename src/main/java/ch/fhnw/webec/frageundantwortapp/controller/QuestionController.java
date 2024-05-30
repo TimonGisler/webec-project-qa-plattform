@@ -77,7 +77,6 @@ public class QuestionController {
         return "redirect:/questions/" + id;
     }
 
-    //TODO TGIS, idk getmapping for that seems weird
     @GetMapping("questions/{id}/delete")
     public String deleteQuestion(@PathVariable int id) {
         questionService.deleteQuestion(id);
@@ -113,7 +112,7 @@ public class QuestionController {
     /**
      * Adds a new question.
      */
-    @PostMapping("questions/add") //TODO TGIS, is Postmapping to just /questions/ maybe more appropriate / Restful?
+    @PostMapping("questions/add")
     public String addQuestion(String title, String text, int[] tags, Model model) {
 
         //imperative error handling
@@ -127,7 +126,6 @@ public class QuestionController {
         newQuestion.setTitle(title);
         newQuestion.setText(text);
 
-        //TODO TGIS, this is probably not the cleanest : ), getting all tags and then filtering : ))). --> maybe move entire logic into questinServie
         for (int tagId : tags) {
             newQuestion.addTag(questionService.getAllTags().stream().filter(tag -> tag.getId() == tagId).findFirst().orElseThrow());
         }
