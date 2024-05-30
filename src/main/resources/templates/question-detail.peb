@@ -13,10 +13,10 @@
             <h2 class="question__title">Title: {{ question.title }}</h2>
             <p class="question__text">Text: {{ question.text }}</p>
             {{ tags(question.tags) }}
-            <nav class="question__actions">
+            <div class="question__actions">
                 <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
                 <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
-            </nav>
+            </div>
         </article>
     </section>
 
