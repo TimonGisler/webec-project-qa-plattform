@@ -8,17 +8,18 @@
 {% block title %}Questions{% endblock %}
 
 {% block main %}
-<main>
-    <ul>
-        {% for question in questionList %}
-        <li>
-            title: {{ question.title }}
-            text: {{ question.text }}
-
-            <a href="{{ href("/questions/" + question.id) }}">Details</a>
-            {{ tags(question.tags) }}
-        </li>
-        {% endfor %}
+<main class="main-content">
+    <ul class="question-list">
+            {% for question in questionList %}
+            <li class="card">
+                <div class="question-list__content">
+                    <span class="question-list__title">Title: {{ question.title }}</span>
+                    <span class="question-list__text">Text: {{ question.text }}</span>
+                </div>
+                <a class="link" href="{{ href('/questions/' + question.id) }}">Details</a>
+                {{ tags(question.tags) }}
+            </li>
+            {% endfor %}
     </ul>
 </main>
 {% endblock %}

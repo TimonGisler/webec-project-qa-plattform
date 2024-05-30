@@ -7,8 +7,8 @@
 {% block title %}Add question{% endblock %}
 
 {% block main %}
-<main>
-    <h1>Add Question</h1>
+<main class="main-content">
+    <h1 class="main-content__title">Add Question</h1>
     {{ questionForm(tagList) }}
 </main>
 {% endblock %}

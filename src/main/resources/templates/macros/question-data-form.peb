@@ -4,29 +4,29 @@
 
 {% macro questionForm(tagList, title, text, selectedTags) %}
 
-<form method="post">
-        <div>
-            <label for="question-title">Title:</label>
-            <input type="text" name="title" id="question-title" value="{{ title }}">
-            <label for="question-text">Text:</label>
-            <input type="text" name="text" id="question-text"  value="{{ text }}">
-            <label for="tags">Choose a tag:</label>
-            <select name="tags" id="tags" multiple>
-                    {% for tag in tagList %}
-                        {% if selectedTags contains tag %}
-                            <option selected value="{{ tag.id }}">{{ tag.name }}</option>
-                        {% else %}
-                             <option value="{{ tag.id }}">{{ tag.name }}</option>
-                        {% endif %}
+<form class="form card" method="post">
+    <div class="form__group">
+        <label class="form__label" for="question-title">Title:</label>
+        <input class="form__input" type="text" name="title" id="question-title" value="{{ title }}">
 
-                    {% endfor %}
-            </select>
-            {# TODO TGIS, i dont like this dropdown style, if time, fix #}
-            <p>Halten Sie die Strg-Taste (Windows) bzw. die Befehlstaste (Mac) gedrückt, um mehrere Optionen auszuwählen.</p>
-        </div>
-        <p>
-            <input type="submit" value="Submit">
-        </p>
- </form>
+        <label class="form__label" for="question-text">Text:</label>
+        <input class="form__input" type="text" name="text" id="question-text" value="{{ text }}">
+
+        <label class="form__label" for="tags">Choose a tag:</label>
+        <select class="form__select" name="tags" id="tags" multiple>
+                {% for tag in tagList %}
+                {% if selectedTags contains tag %}
+                    <option selected value="{{ tag.id }}">{{ tag.name }}</option>
+                    {% else %}
+                    <option value="{{ tag.id }}">{{ tag.name }}</option>
+                {% endif %}
+                {% endfor %}
+        </select>
+        <p class="form__help-text">Halten Sie die Strg-Taste (Windows) bzw. die Befehlstaste (Mac) gedrückt, um mehrere Optionen auszuwählen.</p>
+    </div>
+    <p class="form__actions">
+        <input class="form__button" type="submit" value="Submit">
+    </p>
+</form>
 
 {% endmacro %}

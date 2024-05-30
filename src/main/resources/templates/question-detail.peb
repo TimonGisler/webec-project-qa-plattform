@@ -6,35 +6,38 @@
 {% block title %}Add question{% endblock %}
 
 {% block main %}
-<main>
-    <div id="question">
-        <h1>Title: {{ question.title }}</h1>
-        <p>Text: {{ question.text }}</p>
+<main class="main-content">
+    <h1 class="main-content__title">Question: </h1>
+    <div class="question card">
+        <h1 class="question__title">Title: {{ question.title }}</h1>
+        <p class="question__text">Text: {{ question.text }}</p>
         {{ tags(question.tags) }}
     </div>
 
-    <div id="answer-question">
-        <h1>Answer Question:</h1>
-        <form method="post">
-            <div>
-                <label for="answer">Your Answer:</label>
-                <input type="text" name="answer" id="answer">
+    <div class="answer-question">
+        <h1 class="main-content__title">Answer Question:</h1>
+        <form class="form card" method="post">
+            <div class="form__group">
+                <label class="form__label" for="answer">Your Answer:</label>
+                <input class="form__input" type="text" name="answer" id="answer">
             </div>
-            <p>
-                <input type="submit" value="Add">
-                <a href="{{ href("/questions/" + question.id + "/update") }}">Edit Question</a>
-                <a href="{{ href("/questions/" + question.id + "/delete") }}">Delete Question</a>
+            <p class="form__actions">
+                <input class="form__button" type="submit" value="Add">
+                <a class="link" href="{{ href('/questions/' + question.id + '/update') }}">Edit Question</a>
+                <a class="link link--red" href="{{ href('/questions/' + question.id + '/delete') }}">Delete Question</a>
             </p>
         </form>
     </div>
 
-    <div id="answers">
-        <h1>Answers:</h1>
-        <ul>
-            {% for answer in question.answers %}
-                <li>{{ answer.text }}</li>
-                <a href=" {{ href("/questions/" + question.id + "/answers/" + answer.id + "/delete") }}">Delete Answer</a>
-            {% endfor %}
+    <div class="answers">
+        <h1 class="main-content__title">Answers:</h1>
+        <ul class="answers__list">
+                {% for answer in question.answers %}
+                <div class="card">
+                    <li class="answers__item">{{ answer.text }}</li>
+                    <a class="link link--red" href="{{ href('/questions/' + question.id + '/answers/' + answer.id + '/delete') }}">Delete Answer</a>
+                </div>
+                {% endfor %}
         </ul>
     </div>
 </main>
