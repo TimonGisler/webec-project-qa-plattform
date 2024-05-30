@@ -1,0 +1,10 @@
+
+{% macro errorAlert(error) %}
+
+    {% if error %}
+        <div class="error-alert" role="alert">
+                {{ error }}
+        </div>
+    {% endif %}
+
+{% endmacro %}

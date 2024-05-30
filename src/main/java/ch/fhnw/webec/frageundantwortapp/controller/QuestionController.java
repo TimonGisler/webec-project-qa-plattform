@@ -3,6 +3,7 @@ package ch.fhnw.webec.frageundantwortapp.controller;
 import ch.fhnw.webec.frageundantwortapp.model.Question;
 import ch.fhnw.webec.frageundantwortapp.model.Tag;
 import ch.fhnw.webec.frageundantwortapp.service.QuestionService;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +53,17 @@ public class QuestionController {
     }
 
     @PostMapping("questions/{id}/update")
-    public String updateQuestion(@PathVariable int id, String title, String text, int[] tags) {
+    public String updateQuestion(@PathVariable int id, String title, String text, int[] tags, Model model) {
+
+        //imperataive error handling
+        if (title == null || title.isBlank() || text == null || text.isBlank() || tags == null || tags.length == 0) {
+            model.addAttribute("error", "The updated question must have a title, text and at least one tag.");
+            Question question = questionService.getQuestion(id).orElseThrow();
+            model.addAttribute("question", question);
+            model.addAttribute("tagList", questionService.getAllTags());
+            return "update-question";
+        }
+
         Question question = questionService.getQuestion(id).orElseThrow();
         question.setTitle(title);
         question.setText(text);
@@ -76,6 +87,15 @@ public class QuestionController {
      */
     @PostMapping("questions/{id}")
     public String answerQuestion(@PathVariable int id, String answer, Model model) {
+
+        //imperative error handling
+        if (answer == null || answer.isBlank()) {
+            model.addAttribute("error", "The answer must not be empty.");
+            Question question = questionService.getQuestion(id).orElseThrow();
+            model.addAttribute("question", question);
+            return "question-detail";
+        }
+
         Question answeredQuestion = questionService.addAnswerToQuestion(id, answer);
         model.addAttribute("question", answeredQuestion);
         return "question-detail";
@@ -92,7 +112,15 @@ public class QuestionController {
      * Adds a new question.
      */
     @PostMapping("questions/add") //TODO TGIS, is Postmapping to just /questions/ maybe more appropriate / Restful?
-    public String addQuestion(String title, String text, int[] tags) {
+    public String addQuestion(String title, String text, int[] tags, Model model) {
+
+        //imperative error handling
+        if (title == null || title.isBlank() || text == null || text.isBlank() || tags == null || tags.length == 0) {
+            model.addAttribute("error", "The question must have a title, text and at least one tag.");
+            model.addAttribute("tagList",  questionService.getAllTags());
+            return "add-question";
+        }
+
         Question newQuestion = new Question();
         newQuestion.setTitle(title);
         newQuestion.setText(text);

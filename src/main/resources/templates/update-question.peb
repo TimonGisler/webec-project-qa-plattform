@@ -2,6 +2,8 @@
 {# @pebvariable name="question" type="ch.fhnw.webec.frageundantwortapp.model.Question" #}
 
 {% import "macros/question-data-form" %}
+{% import "macros/error-alert" %}
+
 
 {% extends "layout" %}
 
@@ -9,6 +11,8 @@
 
 {% block main %}
 <main>
+    {{ errorAlert(error) }}
+
     <h1>Edit Question</h1>
     {{ questionForm(tagList, question.title, question.text, question.tags) }}
 </main>

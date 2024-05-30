@@ -1,5 +1,6 @@
 {# @pebvariable name="question" type="ch.fhnw.webec.frageundantwortapp.model.Question" #}
 {% import "macros/tag-list" %}
+{% import "macros/error-alert" %}
 
 {% extends "layout" %}
 
@@ -22,6 +23,7 @@
 
     <section class="answer-question">
         <h1 class="main-content__title">Answer Question:</h1>
+        {{ errorAlert(error) }}
         <form class="form card" method="post">
             <div class="form__group">
                 <label class="form__label" for="answer">Your Answer:</label>
