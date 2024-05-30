@@ -17,7 +17,7 @@ public class Question {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     private List<Tag> tags = new ArrayList<>();
 
     public void setId(int id) {
