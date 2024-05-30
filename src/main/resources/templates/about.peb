@@ -8,7 +8,7 @@
 
     <!-- Overview of the project (QA platform) -->
     <section id="overview" class="about__section card">
-        <h2 class="about__section-title">Overview</h2>
+        <h2 class="about__section-title">Overview / Project description</h2>
         <p class="about__text">This project is a QA platform. Questions can be created, read, updated, and deleted. These questions can have multiple predefined tags.</p>
         <p class="about__text">Tags, some sample questions, and sample answers are automatically created when the database is initialized. The CSS is done following the BEM methodology. The code is tested with unit, integration, and e2e tests. User input is tested using Spring Boot validation (server-side).</p>
         <p class="about__text">Questions can be added on the <code>/questions/add</code> route. All the questions can be seen on the <code>/questions</code> route. There, it is also possible to go into the detail screen of a question.</p>
