@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="{{ href("/style.css") }}">
+    <link rel="stylesheet" href="{{ href('/style.css') }}">
     <title>{% block title %}Title{% endblock %}</title>
 </head>
 <body>
-<div class="container">
-    <header class="header">
-        <h1 class="header__title">Frage und Antworte App</h1>
-        <nav class="header__nav">
-            <ul class="nav__list">
-                <li class="nav__item"><a class="link" href="{{ href('/questions') }}">All Questions</a></li>
-                <li class="nav__item"><a class="link" href="{{ href('/questions/add') }}">Add Question</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-content">
-            {% block main %}
-            {% endblock %}
-    </main>
+<header class="header">
+    <h1 class="header__title">Frage und Antworte App</h1>
+    <nav class="header__nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a class="link" href="{{ href('/questions') }}">All Questions</a></li>
+            <li class="nav__item"><a class="link" href="{{ href('/questions/add') }}">Add Question</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="main-content">
+        {% block main %}
+        {% endblock %}
+</main>
     {# TODO TGIS, consider footer #}
-</div>
 </body>
 </html>
