@@ -155,7 +155,7 @@
 }
 
 .link--red {
-    color: crimson;
+    color: crimson !important;
 }
 
 /* Question List Block */
