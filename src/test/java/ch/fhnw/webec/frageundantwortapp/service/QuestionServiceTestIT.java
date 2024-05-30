@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * Integration test for the {@link QuestionService}.
  */
 @DataJpaTest
-class QuestionServiceTest {
+class QuestionServiceTestIT {
 
     private final QuestionService sut;
     private final QuestionRepository repo;
     private final AnswerRepository answerRepository;
 
     @Autowired
-    QuestionServiceTest(QuestionRepository questionRepository, TagRepository tagRepository, AnswerRepository answerRepository) {
+    QuestionServiceTestIT(QuestionRepository questionRepository, TagRepository tagRepository, AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
         this.sut = new QuestionService(questionRepository, tagRepository);
         this.repo = questionRepository;
