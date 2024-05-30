@@ -9,12 +9,13 @@
 
 {% block main %}
 <main class="main-content">
+    <h1 class="main-content__title">All Questions: </h1>
     <ul class="question-list">
             {% for question in questionList %}
             <li class="card">
                 <div class="question-list__content">
-                    <span class="question-list__title">Title: {{ question.title }}</span>
-                    <span class="question-list__text">Text: {{ question.text }}</span>
+                    <h2 class="question-list__title">Title: {{ question.title }}</h2>
+                    <p class="question-list__text">Text: {{ question.text }}</p>
                 </div>
                 {{ tags(question.tags) }}
                 <a class="link" href="{{ href('/questions/' + question.id) }}">Details / More</a>
